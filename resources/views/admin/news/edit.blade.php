@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>ニュースの編集</h2>
-                <form action="{{ route('admin.news.update') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.news.update') }}" method="post" encpe="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -15,7 +15,8 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">タイトル</label>
+                        <label class="col-md-2" for="title">タイトル
+                        </label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="title" value="{{ $news_form->title }}">
                         </div>

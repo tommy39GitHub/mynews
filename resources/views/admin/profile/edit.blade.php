@@ -15,27 +15,29 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">氏名(name)</label>
+                        <label class="col-md-2" for="title">氏名(name)
+                        </label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="title" value="{{ $profile_form->title }}">
+                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-mad-2" for="title">性別(gender)</label>
+                        <label class="col-md-2" for="title">性別(gender)
+                        </label>
                         <div class="col-md-10">
-                          <input type="text" class="form-control" name="title" value="{{ $profile_form->title }}">
+                            <input type="text" class="form-control" name="gender" value="{{ $profile_form->gender }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-mad-2" for="body">趣味(hobby)</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="body" rows="20">{{ $profile_form->body }}</textarea>
+                            <textarea class="form-control" name="hobby" rows="5">{{ $profile_form->hobby }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-mad-2" for="body">自己紹介欄(introduction)</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="body" rows="20">{{ $profile_form->body }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="10">{{ $profile_form->introduction }}</textarea>
                         </div>
                     </div>
                     
@@ -44,7 +46,7 @@
                             <div class="col-md-10">
                                 <input type="file" class="form-control-file" name="image">
                                 <div class="form-text text-info">
-                                    設定中: {{ $news_form->image_path }}
+                                    設定中: {{ $profile_form->image_path }}
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
