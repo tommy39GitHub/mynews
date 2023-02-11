@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Profile;
 // profile modelを使う
+use App\Models\Profilerecord;
+
+use Carbon\Carbon;
 
 
 class ProfileController extends Controller
@@ -20,6 +23,7 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         $profile = Profile::find($request->id);
+        // dd($profile);
         
         if (empty($profile)) {
             abort(404);
@@ -34,12 +38,19 @@ class ProfileController extends Controller
         $profile_form = $request->all();
         
         unset($profile_form['image']);
+        unset($profile_form['remove']);
         unset($profile_form['_token']);
         
         $profile->fill($profile_form)->save();
+        // dd($profile_form);
         
-            
-        return redirect('admin/profile/edit');
+        $profilerecord = new Profilerecord();
+        $profilerecord->profile_id = $profile->id;
+        $profilerecord->edited_at = Carbon::now();
+        // dd($historyforprofile);    
+        $profilerecord->save();
+        
+        return redirect('admin/profile');
     } 
     
     public function create(Request $request)

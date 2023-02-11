@@ -17,4 +17,10 @@ class Profile extends Model
         'hobby' => 'required',
         'introduction' => 'required',
         );
+        
+    // Profile modelに関連付け
+    public function profilerecords()
+    {
+        return $this->hasMany('App\Models\Profilerecord');
+    }
 }

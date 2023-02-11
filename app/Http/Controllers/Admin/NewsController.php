@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 use App\Models\News;
 // News Modelが扱えるようになる
 
+use App\Models\History;
+// historyModelの使用を宣言
+
+use Carbon\Carbon;
+// carbon日付操作ライブラリ
+
 class NewsController extends Controller
 {
 
@@ -115,6 +121,11 @@ class NewsController extends Controller
         
         // 該当データを上書き保存
         $news->fill($news_form)->save();
+        
+        $history = new History();
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
         
         return redirect('admin/news');
     }
