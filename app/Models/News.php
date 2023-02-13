@@ -20,5 +20,6 @@ class News extends Model
     public function histories()
     {
         return $this->hasMany('App\Models\History');
+        // hasManyメソッド：一覧を表示。newsテーブルに関連付いているhistoriesテーブルをすべて取得
     }
 }

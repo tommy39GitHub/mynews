@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            // historiesテーブルのnews_idに関連づけ
             $table->string('title'); //ニュースのタイトルを保存
             $table->string('body'); //ニュースの本文を保存
             $table->string('image_path')->nullable(); //画像のパスを保存。空でも保存可能
