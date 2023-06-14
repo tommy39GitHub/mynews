@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 @section('title', '登録済みのニュース一覧')
 
+
 @section('content')
     <div class="container">
         <div class="row">
+            <p>課題デプロイしました</p>
             <h2>ニュース一覧</h2>
         </div>
         <div class="row">

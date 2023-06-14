@@ -14,9 +14,9 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="{{secure_asset('js/app.js') }}" defer>
+    <script src="{{secure_asset('js/app.js') }}" defer> //修正 laravelmix
     </script>
-        <link href="{{secure_asset('css/app.css')}}" ref="stylesheet">
+        <link href="{{secure_asset('css/app.css')}}" ref="stylesheet"> {{-- 修正 laravelmix --}}
         
 </head>
 <body>

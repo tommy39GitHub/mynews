@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// }); 
+// // 最初のlaravelのウェルカム画面(/)　でホーム
+
+
+use App\Http\Controllers\NewsController as PublicNewsController;
+Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
+#'/' でウェルカム画面
 
 
 use App\Http\Controllers\Admin\NewsController;
@@ -33,12 +39,12 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
 });
 
 
-/*課題３「http://XXXXXX.jp/XXX というアクセスが来たときに、 
-AAAControllerのbbbというAction に渡すRoutingの設定」*/
-use App\Http\Controllers\XXX\AAAController;
-Route::controller(AAAController::class)->prefix('XXX')->group(function() {
-    Route::get('bbb');
-});
+// /*課題３「http://XXXXXX.jp/XXX というアクセスが来たときに、 
+// AAAControllerのbbbというAction に渡すRoutingの設定」*/
+// use App\Http\Controllers\XXX\AAAController;
+// Route::controller(AAAController::class)->prefix('XXX')->group(function() {
+//     Route::get('bbb');
+// });
 
  /*laravel07 課題2, 3　 ログインしていない状態で /admin/profile/create にアクセス
  した場合はログイン画面にリダイレクト、
@@ -59,6 +65,8 @@ Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->mi
     
     Route::post('profile/create', 'create')->name('profile.create');
     
+    Route::get('profile/delete', 'delete')->name('profile.delete');
+    
     
     
 });
@@ -69,9 +77,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-use App\Http\Controllers\NewsController as PublicNewsController;
-Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
 
 
 use App\Http\Controllers\ProfileController as PublicProfileController;
