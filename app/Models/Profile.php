@@ -1,4 +1,4 @@
-<?php
+<?php //消えていたので入力
 
 namespace App\Models;
 

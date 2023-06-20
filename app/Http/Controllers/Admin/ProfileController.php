@@ -15,12 +15,12 @@ use Carbon\Carbon;
 class ProfileController extends Controller
 {
     
-   public function add()
+   public function add() //プロフィールの追加
     {
         return view('admin.profile.create');
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request) //プロフィールの編集
     {
         $profile = Profile::find($request->id);
         // dd($profile);

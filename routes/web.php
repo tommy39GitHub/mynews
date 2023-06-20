@@ -26,7 +26,8 @@ Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
 
 use App\Http\Controllers\Admin\NewsController;
 Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::get('news/create', 'add')->name('news.add');
+    #prefix() /adminから始まるurlに設定
+    Route::get('news/create', 'add')->name('news.add'); #admin/news/createにアクセスきたらnewscontrollerのaddに渡す
     Route::post('news/create', 'create')->name('news.create');
     
     Route::get('news', 'index')->name('news.index');
@@ -39,11 +40,19 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
 });
 
 
-// /*課題３「http://XXXXXX.jp/XXX というアクセスが来たときに、 
+// *laravel 4 課題３「http://XXXXXX.jp/XXX というアクセスが来たときに、 
 // AAAControllerのbbbというAction に渡すRoutingの設定」*/
+
 // use App\Http\Controllers\XXX\AAAController;
-// Route::controller(AAAController::class)->prefix('XXX')->group(function() {
-//     Route::get('bbb');
+// Route::controller(AAAController::class)->group(function() {
+//     Route::get('XXX', 'bbb');
+// });
+
+ /*laravel 4 課題４　admin/profile/create にアクセスしたらProfileController の add Action に、
+ admin/profile/edit にアクセスしたら ProfileController の edit Action に割り当てるように設定*/
+ 
+// use App\Http\Controllers\Admin\ProfileController;
+// Route::get('profile/edit', [ProfileController::class, 'edit']); #解答例
 // });
 
  /*laravel07 課題2, 3　 ログインしていない状態で /admin/profile/create にアクセス

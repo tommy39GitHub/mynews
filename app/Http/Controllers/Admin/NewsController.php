@@ -14,7 +14,7 @@ use App\Models\History;
 use Carbon\Carbon;
 // carbon日付操作ライブラリ
 
-class NewsController extends Controller
+class NewsController extends Controller //class名
 {
 
     public function add()
@@ -58,29 +58,24 @@ class NewsController extends Controller
         // データベースに保存
         $news->save();
         
-        // admin/news/createにリダイレクト? ->admin/news
+        // admin/news/createにリダイレクト? ->admin/news 
         return redirect('admin/news');
     }
     
+    // 以下を追記
     public function index(Request $request)
     {
-        $cond_title = $request->cond_title;
-            if ($cond_title != '') {
-                /* 検索されたら検索結果を取得。$cond_titleにデータが存在する場合、
-                whereメソッドを使うと、newsテーブルの中のtitleカラムで$cond_title
-                （ユーザーが入力した文字）に一致するレコードをすべて取得。取得した
-                テーブルを$posts変数に代入*/
-                $posts = News::where('title', $cond_title)->get();
-            } else {
-                /* それ以外はすべてのニュースを取得。
-                newsmodelを使ってデータベースに保存されているnewsテーブルのレコードをすべて取得、
-                変数$postに代入*/
-                $posts = News::all();
-            }
-            return view('admin.news.index', ['posts' =>$posts, 'cond_title' => $cond_title]);
-            /*index.blade.phpに取得したレコード$postsと、ユーザが入力した文字列$cond_titleを渡しページを開く*/
+        $cond_title = $request->cond_title; //返り値からcond_titleを取得
+        if ($cond_title != '') {
+        $posts = News::where('title', $cond_title)->get(); 
+                    //whereメソッド titleカラムで$cond_title（入力文字列）に一致するレコードをすべて取得して$postに代入 
+        } else {
+            $posts = News::all(); //Models/News でnewsテーブルのレコードをすべて取得して代入
+        }
+        return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+                        // index.blade.phpに取得した$posts(レコード)と$cond_titleを渡す
     }
-    
+
     public function edit (Request $request) 
     /* editActionは、編集画面*/
     {

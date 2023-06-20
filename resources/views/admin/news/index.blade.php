@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <p>課題デプロイしました</p>
+            <!--<p>課題デプロイしました</p>-->
             <h2>ニュース一覧</h2>
         </div>
         <div class="row">
@@ -36,20 +36,17 @@
                             <th width="10%">ID</th>
                             <th width="20%">タイトル</th>
                             <th width="50%">本文</th>
-                            <th width="10%">操作</th>
+                            <!--<th width="10%">操作</th>-->
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $news)
                             <tr>
                                 <th>{{ $news->id }}</th>
-                                <td>{{ Str::limit($news->title, 100) }}
-                                </td>
-                                <!--Str::limit 文字列を指定した数値、半角で認識で切り詰める-->
-                                
-                                <td>{{ Str::limit($news->body, 250) }}
-                                </td>
-                                <td>
+                                    <td>{{ Str::limit($news->title, 100) }}</td> 
+                                        {{-- Str::limitメソッド 文字列を指定した数値(半角認識)で切詰--}}
+                                    <td>{{ Str::limit($news->body, 250) }}</td>
+                            
                                     <div>
                                         <a href="{{ route('admin.news.edit', ['id' => $news->id]) }}">編集</a>
                                     </div>
