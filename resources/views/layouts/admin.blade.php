@@ -14,7 +14,7 @@
         
         <!-- Scripts -->
            {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
-        <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        <script src="{{ secure_asset('js/app.js') }}" defer></script>  
         
          <!-- Fonts -->
          <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -25,7 +25,7 @@
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet"> 
     </head>
     <body>
         <div id="app">

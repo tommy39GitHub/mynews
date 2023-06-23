@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Profile;
 // profile modelを使う
-use App\Models\Profilerecord;
+use App\Models\Profilerecord; //追加　課題１２
 
-use Carbon\Carbon;
+use Carbon\Carbon; //追加　課題１２
 
 
 class ProfileController extends Controller
@@ -44,6 +44,7 @@ class ProfileController extends Controller
         $profile->fill($profile_form)->save();
         // dd($profile_form);
         
+        //追加　課題１２
         $profilerecord = new Profilerecord();
         $profilerecord->profile_id = $profile->id;
         $profilerecord->edited_at = Carbon::now();

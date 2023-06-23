@@ -8,15 +8,12 @@ use Illuminate\Http\Request;
 use App\Models\News;
 // News Modelが扱えるようになる
 
-use App\Models\History;
-// historyModelの使用を宣言
+use App\Models\History; // historyModelの使用を宣言
 
-use Carbon\Carbon;
-// carbon日付操作ライブラリ
+use Carbon\Carbon; // carbon日付操作ライブラリ 追加
 
 class NewsController extends Controller //class名
 {
-
     public function add()
     {
         return view('admin.news.create');
@@ -59,7 +56,7 @@ class NewsController extends Controller //class名
         $news->save();
         
         // admin/news/createにリダイレクト? ->admin/news 
-        return redirect('admin/news');
+        return redirect('admin/news/');
     }
     
     // 以下を追記
@@ -69,6 +66,7 @@ class NewsController extends Controller //class名
         if ($cond_title != '') {
         $posts = News::where('title', $cond_title)->get(); 
                     //whereメソッド titleカラムで$cond_title（入力文字列）に一致するレコードをすべて取得して$postに代入 
+                        // 引数で検索条件を設定
         } else {
             $posts = News::all(); //Models/News でnewsテーブルのレコードをすべて取得して代入
         }
@@ -77,7 +75,6 @@ class NewsController extends Controller //class名
     }
 
     public function edit (Request $request) 
-    /* editActionは、編集画面*/
     {
         // dd($request->id);
         // dd("editが呼ばれた");
@@ -93,8 +90,7 @@ class NewsController extends Controller //class名
     public function update(Request $request)
     /* updateActionは、 編集画面から送信されたフォームデータを処理*/
     {
-        // validationをかける
-        $this->validate($request, News::$rules);
+        $this->validate($request, News::$rules); // validationをかける
         // news modelからデータを取得
         $news = News::find($request->id);
         // 送信されてきたフォームデータを格納
@@ -108,18 +104,18 @@ class NewsController extends Controller //class名
         } else {
             $news_form['image_path'] = $news->image_path;
         }
+        
         unset($news_form['image']);
         unset($news_form['remove']);
-        
-        
         unset($news_form['_token']);
         
-        // 該当データを上書き保存
-        $news->fill($news_form)->save();
+        $news->fill($news_form)->save(); // 該当データを上書き保存
+            // $news->fill($news_form);
+            // $news->save(); の短縮形
         
-        $history = new History();
+        $history = new History(); //History Model にも編集履歴を追加
         $history->news_id = $news->id;
-        $history->edited_at = Carbon::now();
+        $history->edited_at = Carbon::now(); //Carbon 日付操作ライブラリ 現在時刻取得
         $history->save();
         
         return redirect('admin/news');
@@ -129,7 +125,7 @@ class NewsController extends Controller //class名
     {
         // 該当するnews modelを取得
         $news = News::find($request->id);
-        // 削除する、deleteメソッド
+        // 削除する、delete()メソッド
         $news->delete();
         return redirect('admin/news/');
     }

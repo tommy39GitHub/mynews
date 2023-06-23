@@ -18,25 +18,23 @@ use Illuminate\Support\Facades\Route;
 // }); 
 // // 最初のlaravelのウェルカム画面(/)　でホーム
 
-
+//追加
 use App\Http\Controllers\NewsController as PublicNewsController;
 Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
-#'/' でウェルカム画面
+//'/' でウェルカム画面
 
 
 use App\Http\Controllers\Admin\NewsController;
-Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    #prefix() /adminから始まるurlに設定
-    Route::get('news/create', 'add')->name('news.add'); #admin/news/createにアクセスきたらnewscontrollerのaddに渡す
+Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middleware('auth')
+ ->group(function () {
+                                        //prefix() /adminから始まるurlに設定
+    Route::get('news/create', 'add')->name('news.add'); //admin/news/createにアクセスきたらnewscontrollerのaddに渡す
     Route::post('news/create', 'create')->name('news.create');
-    
     Route::get('news', 'index')->name('news.index');
-    
     Route::get('news/edit', 'edit')->name('news.edit');
     Route::post('news/edit', 'update')->name('news.update');
-    
-    Route::get('new/delete', 'delete')->name('news.delete');
-    /*削除機能は画面を持たず、viewテンプレートは不要 */
+    Route::get('new/delete', 'delete')->name('news.delete'); 
+         /*削除機能は画面を持たずidで指定のModelを削除 viewテンプレートは不要 */
 });
 
 

@@ -15,45 +15,42 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">氏名(name)
-                        </label>
+                        <label class="col-md-2" for="name">氏名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name }}">
+                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name }}"> {{--修正--}}
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">性別(gender)
-                        </label>
+                        <label class="col-md-2" for="title">性別</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="gender" value="{{ $profile_form->gender }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-mad-2" for="body">趣味(hobby)</label>
+                        <label class="col-mad-2" for="hobby">趣味</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="hobby" rows="5">{{ $profile_form->hobby }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-mad-2" for="body">自己紹介欄(introduction)</label>
+                        <label class="col-mad-2" for="body">自己紹介</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="introduction" rows="10">{{ $profile_form->introduction }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="100">{{ $profile_form->introduction }}</textarea>
                         </div>
                     </div>
-                    
                     <div class="form-group row">
-                            <label class="col-md-2" for="image"></label>
-                            <div class="col-md-10">
-                                <input type="file" class="form-control-file" name="image">
-                                <div class="form-text text-info">
-                                    設定中: {{ $profile_form->image_path }}
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
-                                    </label>
-                                </div>
+                        <label class="col-md-2" for="image"></label>
+                        <div class="col-md-10">
+                            <input type="file" class="form-control-file" name="image">
+                            <div class="form-text text-info">
+                                設定中: {{ $profile_form->image_path }}
                             </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
+                                </label>
+                            </div>
+                        </div>
                     </div>
                         <div class="form-group row">
                             <div class="col-md-10">
@@ -63,7 +60,7 @@
                             </div>
                         </div>
                 </form>
-                
+                {{-- 追加　課題１２--}}
                 <div class="row mt-5">
                     <div class="col-md-r mx-auto">
                         <h2>プロフィール編集履歴</h2>

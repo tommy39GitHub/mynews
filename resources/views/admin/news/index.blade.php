@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('title', '登録済みのニュース一覧')
 
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -16,51 +15,50 @@
                 <form action="{{ route('admin.news.index') }}" method="get">
                     <div class="form-group row">
                         <label class="col-md-2">タイトル</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
-                            </div>
-                            <div class="col-md-2">
-                                @csrf
-                                <input type="submit" class="btn btn-primary" value="検索">
-                            </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
+                        </div>
+                        <div class="col-md-2">
+                            @csrf
+                            <input type="submit" class="btn btn-primary" value="検索">
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
-    <div class="row">
-        <div class="list-news col-md-12 mx-auto">
-            <div class="row">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th width="10%">ID</th>
-                            <th width="20%">タイトル</th>
-                            <th width="50%">本文</th>
-                            <!--<th width="10%">操作</th>-->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($posts as $news)
+        <div class="row">
+            <div class="list-news col-md-12 mx-auto">
+                <div class="row">
+                    <table class="table table-dark">
+                        <thead>
                             <tr>
-                                <th>{{ $news->id }}</th>
+                                <th width="10%">ID</th>
+                                <th width="20%">タイトル</th>
+                                <th width="50%">本文</th>
+                                <th width="10%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($posts as $news) {{--@foreach bladeの構文--}}
+                                <tr>
+                                    <th>{{ $news->id }}</th>
                                     <td>{{ Str::limit($news->title, 100) }}</td> 
                                         {{-- Str::limitメソッド 文字列を指定した数値(半角認識)で切詰--}}
                                     <td>{{ Str::limit($news->body, 250) }}</td>
-                            
-                                    <div>
-                                        <a href="{{ route('admin.news.edit', ['id' => $news->id]) }}">編集</a>
-                                    </div>
-                                    <div>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('admin.news.edit', ['id' => $news->id]) }}">編集</a>
+                                        </div>
+                                        <div>
                                         <a href="{{ route('admin.news.delete', ['id' => $news->id]) }}">削除</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    
-                </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

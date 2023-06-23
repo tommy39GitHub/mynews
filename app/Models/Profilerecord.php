@@ -10,9 +10,11 @@ class Profilerecord extends Model
     use HasFactory;
     
     protected $guarded = array('id');
-    
-    public static $rules =array(
+    // protected $table = 'profilerecords'; 
+
+    public static $rules = array(
         'profile_id' => 'required',
         'edited_at' => 'required',
     );
+    
 }

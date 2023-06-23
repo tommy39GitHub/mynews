@@ -16,10 +16,9 @@ class News extends Model
         'body' => 'required',
     );
     
-    // newsmodel に関連づけを行う    
     public function histories()
     {
         return $this->hasMany('App\Models\History');
-        // hasManyメソッド：一覧を表示。newsテーブルに関連付いているhistoriesテーブルをすべて取得
+                    // hasMany（newsテーブルに関連付いているhistoriesテーブルをすべて取得）
     }
 }
