@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //追加
 use App\Http\Controllers\NewsController as PublicNewsController;
 Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
-//'/' でウェルカム画面
+// '/' でウェルカム画面(トップページ)
 
 
 use App\Http\Controllers\Admin\NewsController;
